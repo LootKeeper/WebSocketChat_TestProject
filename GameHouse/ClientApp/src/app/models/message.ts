@@ -1,6 +1,8 @@
+import { User } from "./user";
+
 export class Message {
   constructor(
-    public userName: string,
+    public user: User,
     public text: string) {
   }
 }

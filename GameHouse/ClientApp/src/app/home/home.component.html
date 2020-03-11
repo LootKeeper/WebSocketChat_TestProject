@@ -1,16 +1,12 @@
 <div class="">
   <div>
     <p>Name:</p>
-    <input [(ngModel)]="name" type="text" />
+    <input [(ngModel)]="userName" type="text" />
   </div>
   <div>
-    <p>Message:</p>
-    <input [(ngModel)]="message" type="text" />
+    <input type="button" value="Login" (click)="handleLogin()"/>
   </div>
   <div>
-    <input type="button" value="Send Message" (click)="send()"/>
-  </div>
-  <div>
-
+    <app-chat></app-chat>
   </div>
 </div>

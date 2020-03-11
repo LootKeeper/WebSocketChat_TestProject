@@ -17,6 +17,7 @@ export class SignalRService {
   }
 
   public addDataListener(listener: IListener) {
+    if (!this.hubConnection) throw 'call startConnection before.';
     this.listeners.push(listener);
   }
 

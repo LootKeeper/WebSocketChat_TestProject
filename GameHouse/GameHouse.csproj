@@ -25,19 +25,23 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="ClientApp\src\app\models\chartData.ts" />
+    <None Remove="ClientApp\src\app\models\chatData.ts" />
     <None Remove="ClientApp\src\app\models\listener.ts" />
     <None Remove="ClientApp\src\app\models\message.ts" />
+    <None Remove="ClientApp\src\app\models\user.ts" />
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Include="ClientApp\src\app\models\chartData.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\chatData.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\user.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\listener.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\message.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ClientApp\src\app\shared\" />
     <Folder Include="Controllers\" />
+    <Folder Include="wwwroot\users\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
