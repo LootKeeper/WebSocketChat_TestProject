@@ -3,8 +3,8 @@ import { Message } from '../../models/message';
 
 @Component({
   selector: 'thread-block',
-  templateUrl: './message-block.component.html',
-  styleUrls: ['./message-block.component.css']
+  templateUrl: './thread-block.component.html',
+  styleUrls: ['./thread-block.component.css']
 })
 export class ThreadBlockComponent {
 

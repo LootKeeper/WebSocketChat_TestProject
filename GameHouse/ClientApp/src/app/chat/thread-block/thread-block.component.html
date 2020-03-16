@@ -1,5 +1,5 @@
 <div *ngIf="messages && messages.length > 0">
-  <div *ngFor="let message of messages | async; trackBy: trackById">
+  <div *ngFor="let message of messages; trackBy: trackById">
     <message [message]="message"></message>
     <br />
   </div>
