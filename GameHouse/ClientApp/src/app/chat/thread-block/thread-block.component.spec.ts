@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MessageBlockComponent } from './message-block.component';
+import { ThreadBlockComponent } from './thread-block.component';
 
 describe('MessageBlockComponent', () => {
-  let component: MessageBlockComponent;
-  let fixture: ComponentFixture<MessageBlockComponent>;
+  let component: ThreadBlockComponent;
+  let fixture: ComponentFixture<ThreadBlockComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MessageBlockComponent ]
+      declarations: [ ThreadBlockComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MessageBlockComponent);
+    fixture = TestBed.createComponent(ThreadBlockComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

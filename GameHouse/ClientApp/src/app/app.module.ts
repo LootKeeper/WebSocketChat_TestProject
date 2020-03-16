@@ -9,8 +9,8 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { SignalRService } from './services/signal-r.service';
 import { ChatComponent } from './chat/chat.component';
-import { MessageBlockComponent } from './chat/message-block/message-block.component';
-import { MessageComponent } from './chat/message-block/message/message.component';
+import { ThreadBlockComponent } from './chat/thread-block/thread-block.component';
+import { MessageComponent } from './chat/thread-block/message/message.component';
 import { InputComponent } from './chat/input/input.component';
 import { ChatService } from './services/chat.service';
 
@@ -20,7 +20,7 @@ import { ChatService } from './services/chat.service';
     NavMenuComponent,
     HomeComponent,
     ChatComponent,
-    MessageBlockComponent,
+    ThreadBlockComponent,
     MessageComponent,
     InputComponent
   ],
