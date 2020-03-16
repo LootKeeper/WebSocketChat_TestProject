@@ -1,19 +1,22 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { ChatData } from '../models/chatData';
 import { Message } from '../models/message';
 import { User } from '../models/user';
 import { ChatService } from '../services/chat.service';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css']
 })
-export class ChatComponent {    
+export class ChatComponent implements OnDestroy {    
 
-  data: ChatData
   @Input() user: User;
+
+  data: ChatData;  
+  private messageSubscription: Subscription;
 
   constructor(private chatService: ChatService) {
     this.chatService.getChatData().subscribe(data => {
@@ -22,8 +25,12 @@ export class ChatComponent {
     });    
   }
 
+  ngOnDestroy() {
+    this.messageSubscription.unsubscribe();   
+  }
+
   private subscribeOnNotifications() {
-    this.chatService.getNotifications()
+    this.messageSubscription = this.chatService.getNotifications()
       .pipe(
         debounceTime(700),
         distinctUntilChanged())
@@ -31,9 +38,16 @@ export class ChatComponent {
   }
 
   private send(message: Message) {
-    this.chatService.sendMessage(message).subscribe(result => {
+    this.chatService.sendMessage(message).subscribe(
+      {
+        next: result => {
 
-    });
+        },
+        error: e => {
+          this.messageSubscription.unsubscribe();
+          console.log(e);
+        }
+      });
   }
 
   handleUserInput(msg: string) {

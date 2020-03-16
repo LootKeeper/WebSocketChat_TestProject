@@ -2,14 +2,14 @@ import { SignalRService } from './signal-r.service';
 import { IListener } from '../models/listener';
 import { Message } from '../models/message';
 import { Observable, Observer, pipe } from 'rxjs';
-import { Inject, Injectable } from '@angular/core';
+import { Inject, Injectable, OnDestroy } from '@angular/core';
 import { ChatData } from '../models/chatData';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ChatService implements IListener {    
+export class ChatService implements IListener, OnDestroy {    
 
   private _notifyOnMessage: Observable<Message>;
   private _notificationObserver: Observer<Message>;
@@ -18,6 +18,10 @@ export class ChatService implements IListener {
     private signalr: SignalRService,
     @Inject('BASE_URL') private baseUrl: string,
     private http: HttpClient) { }
+
+  ngOnDestroy() {
+    this._notificationObserver.complete();
+  }
 
   getChatData(): Observable<ChatData> {
     return this.http.get<ChatData>(this.baseUrl + 'api/chat/data');
@@ -37,6 +41,10 @@ export class ChatService implements IListener {
 
   onReceive(message: Message) {
     this._notificationObserver.next(message);
+  }
+
+  onClose() {
+    this._notificationObserver.error('Disconected from chat');    
   }
 
   private _startUpSignalr() {
