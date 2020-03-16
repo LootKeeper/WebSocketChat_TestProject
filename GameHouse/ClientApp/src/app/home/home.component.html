@@ -1,12 +1,14 @@
 <div class="">
-  <div>
-    <p>Name:</p>
-    <input [(ngModel)]="userName" type="text" />
+  <div *ngIf="!isLoggedIn">
+    <div>
+      <p>Name:</p>
+      <input [(ngModel)]="userName" type="text" />
+    </div>
+    <div>
+      <input type="button" value="Login" (click)="handleLogin()" />
+    </div>
   </div>
-  <div>
-    <input type="button" value="Login" (click)="handleLogin()"/>
-  </div>
-  <div>
-    <app-chat></app-chat>
+  <div *ngIf="isLoggedIn">
+    <app-chat [user]="user"></app-chat>
   </div>
 </div>

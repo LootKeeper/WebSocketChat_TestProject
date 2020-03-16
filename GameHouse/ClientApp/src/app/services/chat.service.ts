@@ -4,7 +4,7 @@ import { Message } from '../models/message';
 import { Observable, Observer, pipe } from 'rxjs';
 import { Inject, Injectable } from '@angular/core';
 import { ChatData } from '../models/chatData';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +20,7 @@ export class ChatService implements IListener {
     private http: HttpClient) { }
 
   getChatData(): Observable<ChatData> {
-    return this.http.get<ChatData>(this.baseUrl);
+    return this.http.get<ChatData>(this.baseUrl + 'api/chat/data');
   }
 
   getNotifications(): Observable<Message> {
@@ -30,7 +30,9 @@ export class ChatService implements IListener {
   }
 
   sendMessage(message: Message) {
-    this.signalr.send(message);
+    const body = JSON.stringify(message);
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });    
+    return this.http.post(this.baseUrl + 'api/chat/send', body, { headers: headers });
   }
 
   onReceive(message: Message) {

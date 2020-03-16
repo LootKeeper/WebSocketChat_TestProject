@@ -7,11 +7,11 @@ import { Component, EventEmitter, Output, ViewChild, ElementRef } from '@angular
 })
 export class InputComponent {
 
-  @Output() _emmitMessage: EventEmitter<string> = new EventEmitter();
+  @Output() sendMsg: EventEmitter<string> = new EventEmitter();
   @ViewChild('messageInput', { static: false }) input: ElementRef<HTMLInputElement>;
 
   handleInput() {    
-    this._emmitMessage.emit(this.input.nativeElement.value);
+    this.sendMsg.emit(this.input.nativeElement.value);
     this.input.nativeElement.value = '';
   }
 }

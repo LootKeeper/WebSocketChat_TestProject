@@ -1,5 +1,6 @@
-<div>
-  <span> {{ message.user.userName }}:</span>
-  <message text={{ message.text }}>
-  </message>
+<div *ngIf="messages && messages.length > 0">
+  <div *ngFor="let message of messages; trackBy: trackById">
+    <message [message]="message"></message>
+    <br />
+  </div>
 </div>

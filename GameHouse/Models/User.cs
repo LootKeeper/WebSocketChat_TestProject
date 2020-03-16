@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace GameHouse.Models
 {
-    public class Message
+    public class User
     {
-        public User User { get; set; }
-        public string Text { get; set; }
+        public int UserId { get; set; }
+        public string UserName { get; set; }
     }
 }

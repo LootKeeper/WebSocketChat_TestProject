@@ -1,1 +1,2 @@
-<p>chat works!</p>
+<message-block *ngIf="data" [messages]="data.messages"></message-block>
+<chat-input (sendMsg)="handleUserInput($event)"></chat-input>

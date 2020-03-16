@@ -12,12 +12,12 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 })
 export class ChatComponent {    
 
-  @Input() data: ChatData
+  data: ChatData
   @Input() user: User;
 
   constructor(private chatService: ChatService) {
     this.chatService.getChatData().subscribe(data => {
-      this.data = data
+      this.data = new ChatData(data.messages);
       this.subscribeOnNotifications();
     });    
   }
@@ -31,7 +31,9 @@ export class ChatComponent {
   }
 
   private send(message: Message) {
-    this.chatService.sendMessage(message);
+    this.chatService.sendMessage(message).subscribe(result => {
+
+    });
   }
 
   handleUserInput(msg: string) {

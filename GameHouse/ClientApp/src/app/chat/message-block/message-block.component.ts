@@ -11,4 +11,8 @@ export class MessageBlockComponent {
   @Input() messages: Message[];
 
   constructor() { }
+
+  trackById(index, message) {
+    return index;
+  }
 }
