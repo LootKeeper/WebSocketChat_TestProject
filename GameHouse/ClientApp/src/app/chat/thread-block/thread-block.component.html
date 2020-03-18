@@ -1,6 +1,7 @@
-<div *ngIf="messages && messages.length > 0">
-  <div *ngFor="let message of messages; trackBy: trackById">
-    <message [message]="message"></message>
-    <br />
+<div #thread class="thread">
+  <div class="messages-block" *ngIf="messages && messages.length > 0">
+    <div class="message" *ngFor="let message of messages; trackBy: _trackById">
+      <message [message]="message" [isSelf]="isSelf(message)"></message>
+    </div>
   </div>
 </div>

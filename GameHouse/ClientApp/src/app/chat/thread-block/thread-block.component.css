@@ -1,0 +1,14 @@
+.thread {
+  height: inherit;
+  overflow-y: auto;
+  display: grid;
+  align-items: end;  
+}
+
+.message-block {
+    
+}
+
+.messages-block > .message {
+   padding: 10px;
+}

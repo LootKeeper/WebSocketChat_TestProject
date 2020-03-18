@@ -13,8 +13,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.0" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="5.6.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.6.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,11 +31,13 @@
     <None Remove="ClientApp\src\app\models\chatData.ts" />
     <None Remove="ClientApp\src\app\models\listener.ts" />
     <None Remove="ClientApp\src\app\models\message.ts" />
+    <None Remove="ClientApp\src\app\models\sourceListener.ts" />
     <None Remove="ClientApp\src\app\models\user.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\models\chatData.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\sourceListener.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\user.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\listener.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\message.ts" />

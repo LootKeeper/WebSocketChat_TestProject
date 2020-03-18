@@ -1,6 +1,5 @@
 import { Message } from "./message";
 
-export interface IListener {
-  onReceive(message: Message);
-  onClose();
+export interface IListener<T> {
+  notify(data: T);  
 }

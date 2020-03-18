@@ -9,5 +9,12 @@ namespace GameHouse.Models
     {
         public User User { get; set; }
         public string Text { get; set; }
+
+        public Message() { }
+        public Message(User user, string msg)
+        {
+            User = user;
+            Text = msg;
+        }
     }
 }

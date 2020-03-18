@@ -1,0 +1,41 @@
+.message-container {
+    display: grid;
+}
+
+.message-row.my {
+  justify-self: end;
+}
+
+.message-row.others {
+  justify-self: start;
+}
+
+.message-block {
+  display: grid;
+  grid-template-columns: min-content;
+}
+
+.message {
+    display:grid;
+    grid-template-areas: "username text";
+    grid-template-columns: min-content min-content;
+    align-items: center;
+    padding: 10px;
+    border-radius: 25px;    
+}
+
+  .message.my {
+    background: #8de3fa;    
+  }
+
+  .message.others {
+      background: #7bea6a;    
+  }
+
+.username {
+    grid-area: username;    
+}
+
+.text {
+    grid-area: text;
+}

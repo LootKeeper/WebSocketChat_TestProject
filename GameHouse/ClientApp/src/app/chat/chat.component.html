@@ -1,2 +1,4 @@
-<thread-block *ngIf="data" [messages]="data.messages"></thread-block>
-<chat-input (sendMsg)="handleUserInput($event)"></chat-input>
+<div class="chat">
+  <thread-block class="thread" *ngIf="data" [chatData]="data" [currentUser]="user"></thread-block>
+  <chat-input class="chat-input" (sendMsg)="handleUserInput($event)"></chat-input>
+</div>

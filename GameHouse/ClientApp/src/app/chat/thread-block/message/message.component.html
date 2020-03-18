@@ -1,5 +1,12 @@
-<div>
-  <span> {{ message.user.userName }}:</span>
-  <span> {{ message.text }}
-  </span>
+<div class="message-container">
+  <div ngClass="message-row" [class]="isSelf ? 'my' : 'others'">
+    <div class="message-block">
+      <div ngClass="message" [class]="isSelf ? 'my' : 'others'">
+        <span class="username"> {{ message.user.userName }}:</span>
+        <span class="text">
+          {{ message.text }}
+        </span>
+      </div>
+    </div>
+  </div>
 </div>

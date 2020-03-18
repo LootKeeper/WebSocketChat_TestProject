@@ -1,10 +1,11 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { ChatData } from '../models/chatData';
 import { Message } from '../models/message';
 import { User } from '../models/user';
 import { ChatService } from '../services/chat.service';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { Observable, Subscription } from 'rxjs';
+import { ThreadBlockComponent } from './thread-block/thread-block.component';
 
 @Component({
   selector: 'app-chat',
@@ -34,10 +35,12 @@ export class ChatComponent implements OnDestroy {
       .pipe(
         debounceTime(700),
         distinctUntilChanged())
-      .subscribe(message => this.data.push(message));
+      .subscribe(message => {
+        this.data.push(message);
+      });
   }
 
-  private send(message: Message) {
+  private send(message: string) {
     this.chatService.sendMessage(message).subscribe(
       {
         next: result => {
@@ -51,6 +54,6 @@ export class ChatComponent implements OnDestroy {
   }
 
   handleUserInput(msg: string) {
-    this.send(new Message(this.user, msg));
+    this.send(msg);
   }
 }

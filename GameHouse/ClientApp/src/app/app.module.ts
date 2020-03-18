@@ -13,6 +13,7 @@ import { ThreadBlockComponent } from './chat/thread-block/thread-block.component
 import { MessageComponent } from './chat/thread-block/message/message.component';
 import { InputComponent } from './chat/input/input.component';
 import { ChatService } from './services/chat.service';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { ChatService } from './services/chat.service';
       { path: '', component: HomeComponent, pathMatch: 'full' }
     ])
   ],
-  providers: [SignalRService, ChatService],
+  providers: [SignalRService, ChatService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

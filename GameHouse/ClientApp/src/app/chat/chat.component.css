@@ -1,0 +1,21 @@
+.chat {
+  margin: 5px;
+  display: grid;
+  grid-template-areas: "thread" "input";
+  grid-template-rows: 550px min-content;
+  grid-row-gap: 5px;
+  border: 1px #bbbbbb solid;
+  height: 600px;
+  width: 300px;
+}
+
+.chat > .chat-input {
+    grid-area: input;
+}
+
+.chat > .thread {
+    grid-area: thread;
+    height: 500px;
+    overflow-y: hidden;
+    overflow-x: auto;
+}

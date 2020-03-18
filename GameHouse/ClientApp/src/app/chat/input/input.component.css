@@ -1,0 +1,14 @@
+.chat-input {
+    display: grid;
+    grid-template-areas: "field button";
+    align-items: end;
+    justify-items: center;
+}
+
+.chat-input-field {
+    grid-area: field;
+}
+
+.chat-send-button {
+    grid-area: button;
+}
